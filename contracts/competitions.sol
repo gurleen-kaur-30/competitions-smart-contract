@@ -17,12 +17,14 @@ contract Competitions {
         Voter[] voters;
     }
 
+    uint256 stakeAmount = 0.0001 ether; 
+
     struct Voter {
         uint256 voterAddress;
         // can add more fields
     }
 
-    constructor() {
+    constructor() payable{
         console.log("constructor");
     }
 
@@ -30,8 +32,18 @@ contract Competitions {
         //self closing contest
     }
 
-    function joinContest(string memory contestName) public {
+    function joinContest() external payable{
         // stake min tokens for joining
+        console.log(msg.sender);
+        require(
+        stakeAmount <= msg.sender.balance,
+        "Trying to withdraw more money than the joinee has."
+        );
+        // (bool success, ) = (address(this)).call{value: stakeAmount}("");
+        // payable(address(this)).transfer(stakeAmount); 
+        // require(success, "Failed to send money to contract.");
+        // console.log(address(this).balance);
+        
     }
 
     function uploadEntry() public {
