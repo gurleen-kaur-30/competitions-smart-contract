@@ -54,7 +54,9 @@ contract Competitions {
         // pirze winner ?
     }
 
-    function getAllContests() public returns (Contest[] memory) {}
+    function getAllContests() public returns (Contest[] memory) {
+        // to view all contests on frontend.
+    }
 
     // do we need separate contract for stroing meta data or on contract itself?
     // storing entries on filecoin or ifps?
